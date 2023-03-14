@@ -3,7 +3,8 @@
 
     <!-- users -->
     <h3 class="text-center display-3">USERS</h3>
-    <div class="container-fluid">
+    <SpinnerC v-if="isLoading"/>
+    <div class="container-fluid" v-else>
         <table class="table table-hover table-light table-borderless">
             <thead>
                 <tr class="text-center">
@@ -38,7 +39,8 @@
 
     <!-- events -->
     <h3 class="text-center display-3">EVENTS</h3>
-    <div class="container-fluid table-responsive">
+    <SpinnerC v-if="isLoading"/>
+    <div class="container-fluid table-responsive" v-else>
         <table class="table table-hover table-light table-borderless">
             <thead>
                 <tr class="text-center">
@@ -53,13 +55,13 @@
                 </tr>
             </thead>
             <tbody class="text-center">
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Rumble in the Jungle</td>
-                    <td>Idris Elba VS Dwayne Johnson</td>
-                    <td>Heavyweight</td>
-                    <td>4000.00</td>
-                    <td><img src="https://i.postimg.cc/15GzJgyZ/elba-VSjohnson.jpg" alt="" class="img-fluid"></td>
+                <tr v-for="event in events" :key="event">
+                    <th scope="row">{{ event.id }}</th>
+                    <td>{{ event.eventName }}</td>
+                    <td>{{ event.eventDescription }}</td>
+                    <td>{{ event.weightDivision }}</td>
+                    <td>R{{ event.price }}</td>
+                    <td><img :src="event.eventIMG" alt="" class="img-fluid"></td>
                     <td></td>
                     <td></td>
                 </tr>
@@ -71,6 +73,7 @@
 
 <script>
 import NavBarC from '@/components/NavBarC.vue';
+import SpinnerC from '@/components/SpinnerC.vue';
 import FooterC from '@/components/FooterC.vue';
 
 import { useStore } from 'vuex';
@@ -79,15 +82,29 @@ import { computed } from '@vue/runtime-core'
         name: 'AdminView',
         components : {
             NavBarC,
+            SpinnerC,
             FooterC
         },
         setup(){
             const store = useStore()
             store.dispatch("getUsers")
             const users = computed(()=> store.state.users)
+            store.dispatch("getEvents")
+            const events = computed(()=> store.state.events)
             return {
-                users
+                users,
+                events
             }
+        },
+        data(){
+            return {
+                isLoading : true
+            }
+        },
+        created(){
+            setTimeout(() => {
+                this.isLoading = false;
+            }, 2000);
         }
     }
 </script>

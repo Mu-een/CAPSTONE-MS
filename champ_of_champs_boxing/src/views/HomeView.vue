@@ -40,6 +40,15 @@
     <div class="carousel-item">
       <img src="https://i.postimg.cc/rFXm1GXJ/majors-VSjordan.jpg" class="d-block" alt="...">
     </div>
+    <div class="carousel-item">
+      <img src="https://i.postimg.cc/zBwY7rbv/MMA-Boxing-Fight-Fully-Editable-Promo-Story-Made-with-Poster-My-Wall.jpg" class="d-block" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="https://i.postimg.cc/sxB4YpgJ/ronaldo-VSmessi.jpg" class="d-block" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="https://i.postimg.cc/bNBGKs9K/leclerc-VSnorris.jpg" class="d-block" alt="...">
+    </div>
   </div>
   <button class="carousel-control-prev text-dark" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
