@@ -1,13 +1,12 @@
 <template>
-
-
     <!-- users -->
     <h3 class="text-center display-3 text-danger">USERS</h3>
+    <AddUser/>
     <SpinnerC v-if="isLoading"/>
     <div class="container-fluid" v-else>
-        <table class="table table-hover table-light table-borderless">
+        <table class="table table-transparent table-border">
             <thead>
-                <tr class="text-center">
+                <tr class="text-center text-light">
                     <th scope="col">ID</th>
                     <th scope="col">FIRST NAME</th>
                     <th scope="col">LAST NAME</th>
@@ -20,7 +19,7 @@
                     <th scope="col">DELETE</th>
                 </tr>
             </thead>
-            <tbody class="text-center">
+            <tbody class="text-center text-light">
                 <tr v-for="user in users" :key="user">
                     <td>{{ user.userId }}</td>
                     <td>{{ user.firstName }}</td>
@@ -30,8 +29,8 @@
                     <td>{{ user.emailAddress }}</td>
                     <td>{{ user.userPassword }}</td>
                     <td><img :src="user.userProfile" alt="" class="img-fluid"></td>
-                    <td></td>
-                    <td></td>
+                    <td><EditUser/></td>
+                    <td><button class=" btn bg-warning"><i class="bi bi-trash3"></i></button></td>
                 </tr>
             </tbody>
         </table>
@@ -39,11 +38,12 @@
 
     <!-- events -->
     <h3 class="text-center display-3 text-danger">EVENTS</h3>
+    <AddEvent/>
     <SpinnerC v-if="isLoading"/>
     <div class="container-fluid table-responsive" v-else>
-        <table class="table table-hover table-light table-borderless">
+        <table class="table table-transparent table-border">
             <thead>
-                <tr class="text-center">
+                <tr class="text-center text-light">
                     <th>ID</th>
                     <th>EVENT NAME</th>
                     <th>EVENT DESCRIPTION</th>
@@ -54,7 +54,7 @@
                     <th>DELETE</th>
                 </tr>
             </thead>
-            <tbody class="text-center">
+            <tbody class="text-center text-light">
                 <tr v-for="event in events" :key="event">
                     <th scope="row">{{ event.id }}</th>
                     <td>{{ event.eventName }}</td>
@@ -62,8 +62,8 @@
                     <td>{{ event.weightDivision }}</td>
                     <td>R{{ event.price }}</td>
                     <td><img :src="event.eventIMG" alt="" class="img-fluid"></td>
-                    <td></td>
-                    <td></td>
+                    <td><EditEvent/></td>
+                    <td><button class=" btn bg-warning"><i class="bi bi-trash3"></i></button></td>
                 </tr>
             </tbody>
         </table>
@@ -72,18 +72,22 @@
 </template>
 
 <script>
-
+import AddUser from '@/components/AddUser.vue';
+import EditUser from '@/components/EditUser.vue'
+import AddEvent from '@/components/AddEvent.vue';
+import EditEvent from '@/components/EditEvent.vue'
 import SpinnerC from '@/components/SpinnerC.vue';
-
 
 import { useStore } from 'vuex';
 import { computed } from '@vue/runtime-core'
     export default {
         name: 'AdminView',
         components : {
-            
+            AddUser,
+            EditUser,
+            AddEvent,
+            EditEvent,
             SpinnerC
-            
         },
         setup(){
             const store = useStore()

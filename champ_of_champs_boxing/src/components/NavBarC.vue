@@ -28,6 +28,9 @@
                     <li class="nav-item">
                         <router-link to="/register">Register<i class="bi bi-pencil-square"></i></router-link>
                     </li>
+                    <li class="nav-item">
+                        <router-link to="/account">Account<i class="bi bi-person-vcard"></i></router-link>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -55,5 +58,15 @@ a {
     color: #435058;
     font-size: 25px;
     padding: 5px;
+}
+
+li {
+    padding: 7px;
+}
+
+nav a.router-link-exact-active {
+  color: red;
+  background-color: #0A0F0D;
+  border-radius: 20px;
 }
 </style>

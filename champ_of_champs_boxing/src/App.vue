@@ -26,9 +26,5 @@ import FooterC from './components/FooterC.vue';
   font-family: 'Alata', sans-serif;
 }
 
-nav a.router-link-exact-active {
-  color: red;
-  background-color: #0A0F0D;
-  border-radius: 20px;
-}
+
 </style>

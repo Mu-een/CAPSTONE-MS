@@ -2,7 +2,7 @@
     <br>
     <!-- search input-->
     <input class="form-control w-25 mx-auto" type="text" placeholder="Search Weight Division .." v-model="searching" ><br>
-    <!-- sort  by price button -->
+    <!-- sort by price button -->
     <button class=" form-control text-center mx-auto w-25" @click="sortByPrice">Price</button><br>
     <!-- spinner -->
     <SpinnerC v-if="isLoading"/> 

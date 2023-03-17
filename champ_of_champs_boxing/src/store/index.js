@@ -88,6 +88,10 @@ export default createStore({
       } else {
         commit('setMessage', err)
       }
+    },
+    logout(context) {
+      context.commit('login', false)
+      context.commit('user', null)
     }
   },
   modules: {

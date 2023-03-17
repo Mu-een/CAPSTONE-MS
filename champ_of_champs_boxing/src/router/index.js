@@ -41,6 +41,11 @@ const routes = [
     path: '/event/:id',
     name: 'event',
     component: () => import( '../views/SingleEventView.vue')
+  },
+  {
+    path: '/account',
+    name: 'account',
+    component: () => import( '../views/UserProfileView.vue')
   }
 ]
 
@@ -48,5 +53,4 @@ const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
 })
-
 export default router
