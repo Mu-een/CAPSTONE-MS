@@ -6,12 +6,13 @@
         </div> 
         <div class="socials text-center" v-for="items in socials" :key="items">
             <p>FOLLOW US</p>
-            <a :href="items.linkedin" target="_blank" style="font-size: 30px; color: #F1F2EE;"><i class="bi bi-linkedin"></i></a>
+            <a :href="items.linkedin" target="_blank" style="font-size: 30px; color: black;"><i class="bi bi-linkedin"></i></a>
         </div>
     </footer>
 </template>
 
 <script>
+
 export default {
     name: 'FooterC',
     data(){
@@ -28,9 +29,12 @@ export default {
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Alata&display=swap');
+
 footer {
-background-color:#BFB7B6;
+background-color:#DEDBD8;
 padding: 50px;
+font-family: 'Alata', sans-serif;
 }
 
 .footerText {

@@ -1,5 +1,5 @@
 <template>
-    <NavBarC/>
+   
     <div class="register-img" style="position: relative;"></div>
     <div class="container-fluid register">
         <!-- <img src="https://i.postimg.cc/yYTbsQkD/CHAMP-OF-CHAMPS.png" alt="" style="width: auto;height: 220px;position: absolute;"> -->
@@ -28,24 +28,22 @@
                     <input type="date" class="form-control w-50 mx-auto" id="exampleFormControlInput1" placeholder="Date Joined" >
                 </div> -->
             <div class="text-center">
-                <button type="submit" class="btn w-10 btn-lg" style="color:#F1F2EE ;">Register</button>
+                <button type="submit" class="btn w-10 btn-lg bg-dark" style="color:#F1F2EE ;">Register</button>
             </div>
             <div>
                 <label class="form-control" v-show="userMessage"></label>
             </div>
         </form>
     </div>
-    <FooterC/>
+   
 </template>
 
 <script>
-import NavBarC from '@/components/NavBarC.vue';
-import FooterC from '@/components/FooterC.vue';
+
     export default {
         name: 'RegisterView',
         components: {
-            NavBarC,
-            FooterC
+         
         }
     }
 </script>

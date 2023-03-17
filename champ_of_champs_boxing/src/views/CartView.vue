@@ -1,13 +1,13 @@
 <template>
-    <NavBarC/>
+    <div></div>
 </template>
 
 <script>
-import NavBarC from '@/components/NavBarC.vue';
+
     export default {
         name: 'CartView',
         components: {
-            NavBarC
+            
         }
     }
 </script>

@@ -36,6 +36,11 @@ const routes = [
     path: '/admin',
     name: 'admin',
     component: () => import( '../views/AdminView.vue')
+  },
+  {
+    path: '/event/:id',
+    name: 'event',
+    component: () => import( '../views/SingleEventView.vue')
   }
 ]
 

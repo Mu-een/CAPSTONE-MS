@@ -1,8 +1,8 @@
 <template>
-    <NavBarC/>
+
 
     <!-- users -->
-    <h3 class="text-center display-3">USERS</h3>
+    <h3 class="text-center display-3 text-danger">USERS</h3>
     <SpinnerC v-if="isLoading"/>
     <div class="container-fluid" v-else>
         <table class="table table-hover table-light table-borderless">
@@ -38,7 +38,7 @@
     </div>
 
     <!-- events -->
-    <h3 class="text-center display-3">EVENTS</h3>
+    <h3 class="text-center display-3 text-danger">EVENTS</h3>
     <SpinnerC v-if="isLoading"/>
     <div class="container-fluid table-responsive" v-else>
         <table class="table table-hover table-light table-borderless">
@@ -68,22 +68,22 @@
             </tbody>
         </table>
     </div>
-    <FooterC/>
+    
 </template>
 
 <script>
-import NavBarC from '@/components/NavBarC.vue';
+
 import SpinnerC from '@/components/SpinnerC.vue';
-import FooterC from '@/components/FooterC.vue';
+
 
 import { useStore } from 'vuex';
 import { computed } from '@vue/runtime-core'
     export default {
         name: 'AdminView',
         components : {
-            NavBarC,
-            SpinnerC,
-            FooterC
+            
+            SpinnerC
+            
         },
         setup(){
             const store = useStore()
@@ -120,5 +120,25 @@ img {
 
 h3, thead {
   font-family: 'DM Serif Display', serif;
+}
+
+@media screen and(max-width: 720px) and (min-width: 300px) {
+  .table {
+    display: block;
+    width: 100%;
+    overflow-x: hidden;
+  }
+}
+@media only screen and (max-width: 700px) {
+  table, thead, tbody, th, td, tr {
+    display: block;
+  }
+  th {
+    text-align: left;
+  }
+  tbody td:before {
+    float: left;
+    font-weight: bold;
+  }
 }
 </style>

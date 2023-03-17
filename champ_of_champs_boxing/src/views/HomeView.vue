@@ -1,5 +1,5 @@
 <template>
-  <NavBarC/>
+  
   <!-- landing page -->
   <div class="landingPage">
     <div class="container-fluid d-flex justify-content-center align-items-center" style="height: 50vh;">
@@ -13,7 +13,7 @@
   <!-- about -->
 <section class="about">
   <h2 class="text-center display-2">ABOUT US</h2>
-  <div class="aboutUs">
+  <div class="aboutUs text-light">
     <p>Welcome to <strong>CHAMP OF CHAMPS BOXING</strong>, where fame meets fury! 
       We are the premier destination for thrilling entertainment featuring your favourite celebrities stepping into the ring 
       for intense boxing matches.</p>
@@ -31,7 +31,7 @@
 
 <!-- promoted events carousel-->
 <h2 class="text-center display-2">PROMOTED FIGHTS</h2>
-<p class="text-center" style="font-size: 20px;">Check out some of our main events!</p>
+<p class="text-center text-light" style="font-size: 20px;">Check out some of our main events!</p>
   <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
@@ -49,13 +49,28 @@
     <div class="carousel-item">
       <img src="https://i.postimg.cc/bNBGKs9K/leclerc-VSnorris.jpg" class="d-block" alt="...">
     </div>
+    <div class="carousel-item">
+      <img src="https://i.postimg.cc/Z5Lg9dXf/khalifa-VSgyllenhaal.jpg" class="d-block" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="https://i.postimg.cc/gJqd2vxc/rousey-VSrodriguez.jpg" class="d-block" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="https://i.postimg.cc/GpYWC2xx/dearmas-VScorber.jpg" class="d-block" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="https://i.postimg.cc/VsS8wTxK/sprouse-VSsprouse.jpg" class="d-block" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="https://i.postimg.cc/KY3xcHV7/murphy-VSbale.jpg" class="d-block" alt="...">
+    </div>
   </div>
-  <button class="carousel-control-prev text-dark" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+  <button class="carousel-control-prev text-light" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <i class="bi bi-caret-left-fill"></i>
     <span class="visually-hidden">Previous</span>
   </button>
-  <button class="carousel-control-next text-dark" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+  <button class="carousel-control-next text-light" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
     <i class="bi bi-caret-right-fill"></i>
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Next</span>
@@ -64,42 +79,41 @@
 
 <!-- contact us -->
 <h2 class="text-center display-2">CONTACT US</h2>
-<p class="text-center" style="font-size: 20px;">We value your feedback and would love to hear from you.</p>
+<p class="text-center text-light" style="font-size: 20px;">We value your feedback and would love to hear from you.</p>
 
 <div class="container-fluid">
         <form action="https://formspree.io/f/xjvdvznl" method="POST" role="form" class="w-75 m-5 mx-auto text-center form" style="font-size: 20px;">
             <div class="mb-3 row">
                 <div class="col-md-6 form-group">
-                    <label for="fname" class="form-label fname">First Name</label>
+                    <label for="fname" class="form-label fname text-light">First Name</label>
                     <input type="text" name="name" class="form-control" placeholder="Type your name here .." required="required" data-error="First Name is needed">
                     <div class="help-block with-errors"></div>
                 </div>
                 <div class="col-md-6 form-group">
-                    <label for="lname" class="form-label lname">Last Name</label>
+                    <label for="lname" class="form-label lname text-light">Last Name</label>
                     <input type="text" name="lastName" class="form-control" placeholder="Type your last name here .." required="required" data-error="Last is needed">
                     <div class="help-block with-errors"></div>
                 </div>
          </div>
          <div class="mb-3">
-           <label for="message" class="form-label msgBox">Message</label>
+           <label for="message" class="form-label msgBox text-light">Message</label>
            <textarea class="form-control" rows="3" placeholder="Type your message here .." required="required"></textarea>
          </div>
          <div>
-            <button type="submit button" class="btn btn-lg">Send</button>
+            <button type="submit button" class="btn btn-lg text-light bg-danger">Send</button>
          </div>
         </form>
 </div>
-<FooterC/>
+
 </template>
 
 <script>
-import NavBarC from '@/components/NavBarC.vue';
-import FooterC from '@/components/FooterC.vue';
+
+
 export default {
   name: 'HomeView',
   components: {
-    NavBarC,
-    FooterC
+ 
   }
 }
 </script>
@@ -132,13 +146,13 @@ h1 {
 
 @keyframes changeColor {
   0% {
-    color: #DCF763;
-  }
-  50% {
     color: black;
   }
+  50% {
+    color: red;
+  }
   100% {
-    color: #DCF763;
+    color: black;
   }
 }
 .aboutUs {
@@ -148,7 +162,8 @@ h1 {
 }
 
 h2 {
-  text-shadow: 2px -2px 2px black;
+  color: red;
+  text-shadow: 2px -2px 2px white;
 }
 h1 , h2 {
   font-family: 'DM Serif Display', serif;
