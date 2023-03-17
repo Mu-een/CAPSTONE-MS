@@ -14,19 +14,19 @@
       </div>
       <div class="modal-body">
         <div class="mb-3">
-                <input type="text" class="form-control w-50 mx-auto" id="exampleFormControlInput1" placeholder="Event Name" >
+                <input type="text" class="form-control w-50 mx-auto" id="exampleFormControlInput1" placeholder="Event Name">
             </div>
             <div class="mb-3">
-                <input type="text" class="form-control w-50 mx-auto" id="exampleFormControlInput1" placeholder="Event Description" >
+                <input type="text" class="form-control w-50 mx-auto" id="exampleFormControlInput1" placeholder="Event Description">
             </div>
             <div class="mb-3">
-                <input type="text" class="form-control w-50 mx-auto" id="exampleFormControlInput1" placeholder="Weight Division" >
+                <input type="text" class="form-control w-50 mx-auto" id="exampleFormControlInput1" placeholder="Weight Division">
             </div>
             <div class="mb-3">
-                <input type="text" class="form-control w-50 mx-auto" id="exampleFormControlInput1" placeholder="Price" >
+                <input type="text" class="form-control w-50 mx-auto" id="exampleFormControlInput1" placeholder="Price">
             </div>
             <div class="mb-3">
-                <input type="text" class="form-control w-50 mx-auto" id="exampleFormControlInput1" placeholder="Card IMG" >
+                <input type="text" class="form-control w-50 mx-auto" id="exampleFormControlInput1" placeholder="Card IMG">
             </div>
       </div>
       <div class="modal-footer">

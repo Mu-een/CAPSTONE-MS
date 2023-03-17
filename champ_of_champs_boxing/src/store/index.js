@@ -69,13 +69,30 @@ export default createStore({
         context.commit('setMessage', err)
       }
     },
-
+    async addEvent (context){
+      const res = await axios.post(`${champOfChamps}event`);
+      let {results, err} = await res.data;
+      if(results){
+        context.commit('setEvent', results)
+      } else {
+        context.commit('setMessage', err)
+      }
+    },
     // Users
     async getUsers(context){
       const res = await axios.get(`${champOfChamps}users`);
       let {results, err} = await res.data;
       if(results) {
         context.commit('setUsers', results)
+      } else {
+        context.commit('setMessage', err)
+      }
+    },
+    async addUser(context, payload) {
+      const res = await axios.post(`${champOfChamps}register`);
+      let{results, err} = await res.data;
+      if(results) {
+        context.commit('setUser', payload)
       } else {
         context.commit('setMessage', err)
       }

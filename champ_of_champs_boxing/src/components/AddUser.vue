@@ -14,22 +14,22 @@
       </div>
       <div class="modal-body">
             <div class="mb-3">
-                <input type="text" class="form-control w-50 mx-auto" id="exampleFormControlInput1" placeholder="First Name" >
+                <input type="text" class="form-control w-50 mx-auto" id="exampleFormControlInput1" placeholder="First Name">
             </div>
             <div class="mb-3">
-                <input type="text" class="form-control w-50 mx-auto" id="exampleFormControlInput1" placeholder="Last Name" >
+                <input type="text" class="form-control w-50 mx-auto" id="exampleFormControlInput1" placeholder="Last Name">
             </div>
             <div class="mb-3">
-                <input type="text" class="form-control w-50 mx-auto" id="exampleFormControlInput1" placeholder="Role" >
+                <input type="text" class="form-control w-50 mx-auto" id="exampleFormControlInput1" placeholder="Role">
             </div>
             <div class="mb-3">
-                <input type="text" class="form-control w-50 mx-auto" id="exampleFormControlInput1" placeholder="Gender" >
+                <input type="text" class="form-control w-50 mx-auto" id="exampleFormControlInput1" placeholder="Gender">
             </div>
             <div class="mb-3">
-                <input type="email" class="form-control w-50 mx-auto" id="exampleFormControlInput1" placeholder="Email" >
+                <input type="email" class="form-control w-50 mx-auto" id="exampleFormControlInput1" placeholder="Email">
             </div>
             <div class="mb-3">
-                <input type="password" class="form-control w-50 mx-auto" id="exampleFormControlInput1" placeholder="Password" >
+                <input type="password" class="form-control w-50 mx-auto" id="exampleFormControlInput1" placeholder="Password">
             </div>
             <div class="mb-3">
                 <input type="text" class="form-control w-50 mx-auto" id="exampleFormControlInput1" placeholder="Profile URL" >
@@ -47,7 +47,7 @@
 
 <script>
     export default {
-        name: 'AddUser'
+        name: 'AddUser',
     }
 </script>
 

@@ -23,15 +23,12 @@
 </template>
 
 <script>
-
 import SpinnerC from '@/components/SpinnerC.vue';
 
     export default {
         name:'EventsView',
         components: {
-            
             SpinnerC
-            
         },
         mounted() {
             this.$store.dispatch('getEvents')
