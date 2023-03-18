@@ -1,5 +1,7 @@
 import { createStore } from 'vuex'
 import axios from 'axios';
+import {useCookies} from 'vue3-cookies';
+const {cookies} = useCookies();
 const champOfChamps = "https://api-capstone.onrender.com/";
 
 export default createStore({
@@ -11,7 +13,8 @@ export default createStore({
     message: null,
     Spinner: null,
     asc: true,
-    loggedIn: false
+    loggedIn: false,
+    token: null
   },
   getters: {
   },
@@ -40,13 +43,8 @@ export default createStore({
       }
       state.asc = !state.asc;
     },
-    login(state, user) {
-      state.loggedIn = true
-      state.user = user
-    },
-    logout(state){
-      state.loggedIn = false
-      state.user = null
+    setToken(state, value){
+      state.token = value
     }
   },
   actions: {
@@ -69,15 +67,31 @@ export default createStore({
         context.commit('setMessage', err)
       }
     },
-    async addEvent (context){
-      const res = await axios.post(`${champOfChamps}event`);
-      let {results, err} = await res.data;
-      if(results){
-        context.commit('setEvent', results)
-      } else {
-        context.commit('setMessage', err)
+    async addEvent (context, payload){
+      try {
+        const res = await axios.post(`${champOfChamps}event`, payload);
+        console.log('Result:', res);
+        const {result, msg, err} = await res.data;
+        if(result){
+          context.commit('setEvent', result)
+          context.commit('setMessage', msg)
+        } else {
+          context.commit('setMessage', err)
+        }
+      } catch (error) {
+        console.error(error)
       }
     },
+    async deleteEvent({commit, dispatch}, id) {
+      try {
+        await axios.delete(`${champOfChamps}event/${id}`)
+        commit('setMessage', 'Event Deleted');
+        dispatch('getEvents');
+      } catch (error){
+        commit('setMessage', 'Cannot delete event')
+      }
+    },
+
     // Users
     async getUsers(context){
       const res = await axios.get(`${champOfChamps}users`);
@@ -89,26 +103,45 @@ export default createStore({
       }
     },
     async addUser(context, payload) {
-      const res = await axios.post(`${champOfChamps}register`);
-      let{results, err} = await res.data;
-      if(results) {
-        context.commit('setUser', payload)
-      } else {
-        context.commit('setMessage', err)
+      try {
+        const res = await axios.post(`${champOfChamps}register`, payload);
+        console.log('Result:', res);
+        const{result, msg, err} = await res.data;
+        if(result) {
+          context.commit('setUser', result)
+          context.commit('setMessage', msg)
+        } else {
+          context.commit('setMessage', err)
+        }
+      } catch (error) {
+        console.error(error)
       }
     },
-    async loginUser({commit}, user) {
-      const res = await axios.get(`${champOfChamps}login`);
-      let {results, err} = await res.data;
-      if(results){
-        commit('login', user)
-      } else {
-        commit('setMessage', err)
+    async deleteUser({commit, dispatch}, id){
+      try {
+        await axios.delete(`${champOfChamps}user/${id}`)
+        commit('setMessage', 'User deleted');
+        dispatch('getUsers');
+      } catch(error){
+        commit('setMessage','Cannot delete user')
       }
     },
-    logout(context) {
-      context.commit('login', false)
-      context.commit('user', null)
+    async login(context, payload) {
+      try{
+        const res = await axios.post(`${champOfChamps}login`, payload);
+        console.log('Results:', res);
+        const {result, jwToken, msg, err} = await res.data;
+        if(result) {
+          context.commit('setUser',result);
+          context.commit('setToken', jwToken);
+          cookies.set('login_cookie', jwToken)
+          context.commit('setMessage', msg)
+        } else {
+          context.commit('setMessage', err);
+        }
+      } catch (error) {
+        console.error(error)
+      }
     }
   },
   modules: {

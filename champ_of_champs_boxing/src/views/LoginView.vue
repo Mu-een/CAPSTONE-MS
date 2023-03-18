@@ -1,46 +1,50 @@
 <template>
-    
     <div class="login-img" style="position: relative;"></div>
     <div class="container-fluid login">
             <h3 class="text-center display-3">LOGIN TO YOUR ACCOUNT</h3>
             <p class="text-center" style="font-size: 20px;">Login to access CHAMP OF CHAMPS</p>
-            <form class="form container">
+            <form class="form container" @submit.prevent="login">
                 <div class="mb-3">
-                    <input type="email" class="form-control w-25 mx-auto" id="exampleFormControlInput1" placeholder="Email" v-model="email">
+                    <input type="email" class="form-control w-25 mx-auto" id="exampleFormControlInput1" placeholder="Email" v-model="payload.emailAddress">
                 </div>
                 <div class="mb-3">
-                    <input type="password" class="form-control w-25 mx-auto" id="exampleFormControlInput1" placeholder="Password" v-model="password">
+                    <input type="password" class="form-control w-25 mx-auto" id="exampleFormControlInput1" placeholder="Password" v-model="payload.userPassword">
                 </div>
                 <div class="text-center">
-                    <button type="submit" class="btn w-10 btn-lg bg-dark" style="color:#F1F2EE ;">Login</button>
+                    <button type="submit" class="btn w-10 btn-lg bg-dark" style="color:#F1F2EE ;" @click.prevent="login">Login</button>
                 </div>
             </form><br>
             <p class="text-center text-light" style="margin-top: 30px;font-size: 18px;">Don't have an account? <a href="/register" style="text-decoration: none;color: red;">Register here</a></p>
+            <div class="text-light text-center " style="font-size: 20px;">
+                <p>{{ message }} as {{ user?.firstName }} {{ user?.lastName}}</p>
+            </div>
     </div>
-
 </template>
 
 <script>
-import { useStore } from 'vuex'
-import { ref } from 'vue';
     export default {
         name: 'LoginView',
-        setup(){
-            const store = useStore()
-
-            const email = ref('')
-            const password = ref('')
-
-            const login = async () => {
-                await store.dispatch('login', {email: email.value, password: password.value})
+        data(){
+            return{
+                payload:{
+                    emailAddress:'',
+                    userPassword:''
+                }
             }
-
-            return {
-                email,
-                password,
-                login
+        },
+        computed:{
+            message(){
+                return this.$store.state.message
+            },
+            user(){
+                return this.$store.state.user
             }
-
+        },
+        methods: {
+            login(){
+                console.log('Return:', this.payload);
+                this.$store.dispatch('login',this.payload)
+            }
         }
     }
 </script>

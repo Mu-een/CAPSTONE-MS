@@ -13,25 +13,27 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <div class="mb-3">
-                <input type="text" class="form-control w-50 mx-auto" id="exampleFormControlInput1" placeholder="Event Name">
-            </div>
-            <div class="mb-3">
-                <input type="text" class="form-control w-50 mx-auto" id="exampleFormControlInput1" placeholder="Event Description">
-            </div>
-            <div class="mb-3">
-                <input type="text" class="form-control w-50 mx-auto" id="exampleFormControlInput1" placeholder="Weight Division">
-            </div>
-            <div class="mb-3">
-                <input type="text" class="form-control w-50 mx-auto" id="exampleFormControlInput1" placeholder="Price">
-            </div>
-            <div class="mb-3">
-                <input type="text" class="form-control w-50 mx-auto" id="exampleFormControlInput1" placeholder="Card IMG">
-            </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-success">Add Event</button>
+        <form @submit.prevent="addEvent">
+          <div class="mb-3">
+              <input type="text" class="form-control w-50 mx-auto" id="exampleFormControlInput1" placeholder="Event Name" v-model="payload.eventName">
+          </div>
+          <div class="mb-3">
+              <input type="text" class="form-control w-50 mx-auto" id="exampleFormControlInput1" placeholder="Event Description" v-model="payload.eventDescription">
+          </div>
+          <div class="mb-3">
+              <input type="text" class="form-control w-50 mx-auto" id="exampleFormControlInput1" placeholder="Weight Division" v-model="payload.weightDivision">
+          </div>
+          <div class="mb-3">
+              <input type="text" class="form-control w-50 mx-auto" id="exampleFormControlInput1" placeholder="Price" v-model="payload.price">
+          </div>
+          <div class="mb-3">
+              <input type="text" class="form-control w-50 mx-auto" id="exampleFormControlInput1" placeholder="Card IMG" v-model="payload.eventIMG">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-success">Add Event</button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
@@ -41,7 +43,29 @@
 
 <script>
     export default {
-        name: 'AddUser'
+        name: 'AddEvent',
+        data(){
+          return {
+            payload: {
+              eventName:'',
+              eventDescription:'',
+              weightDivision:'',
+              price:'',
+              eventIMG:''
+            }
+          }
+        },
+        computed: {
+          message(){
+            return this.store.state.message
+          }
+        },
+        methods:{
+          addEvent(){
+            console.log('Debug', this.payload);
+            this.$store.dispatch('addEvent', this.payload)
+          }
+        }
     }
 </script>
 

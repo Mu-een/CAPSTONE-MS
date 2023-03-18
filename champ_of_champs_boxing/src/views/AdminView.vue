@@ -30,7 +30,7 @@
                     <td>{{ user.userPassword }}</td>
                     <td><img :src="user.userProfile" alt="" class="img-fluid"></td>
                     <td><EditUser/></td>
-                    <td><button class=" btn bg-warning"><i class="bi bi-trash3"></i></button></td>
+                    <td><button type="submit" class=" btn bg-warning" @click="$event => deleteUser(user.userId)"><i class="bi bi-trash3"></i></button></td>
                 </tr>
             </tbody>
         </table>
@@ -63,7 +63,7 @@
                     <td>R{{ event.price }}</td>
                     <td><img :src="event.eventIMG" alt="" class="img-fluid"></td>
                     <td><EditEvent/></td>
-                    <td><button class=" btn bg-warning"><i class="bi bi-trash3"></i></button></td>
+                    <td><button type="submit" class=" btn bg-warning" @click="$event => deleteEvent(event.id)"><i class="bi bi-trash3"></i></button></td>
                 </tr>
             </tbody>
         </table>
@@ -89,6 +89,14 @@ import { computed } from '@vue/runtime-core'
             EditEvent,
             SpinnerC
         },
+        methods:{
+            deleteEvent(id){
+                this.$store.dispatch('deleteEvent',id)
+            },
+            deleteUser(id){
+                this.$store.dispatch('deleteUser',id)
+            }
+        },
         setup(){
             const store = useStore()
             store.dispatch("getUsers")
@@ -97,7 +105,7 @@ import { computed } from '@vue/runtime-core'
             const events = computed(()=> store.state.events)
             return {
                 users,
-                events
+                events,
             }
         },
         data(){

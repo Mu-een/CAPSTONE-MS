@@ -5,28 +5,28 @@
         <!-- <img src="https://i.postimg.cc/yYTbsQkD/CHAMP-OF-CHAMPS.png" alt="" style="width: auto;height: 220px;position: absolute;"> -->
         <h3 class="text-center display-3">BECOME A CHAMP OF CHAMPS MEMBER</h3>
         <p class="text-center" style="font-size: 20px;">Create your CHAMP OF CHAMPS profile and get access to the best of celebrity boxing</p>
-        <form class="form container">
+        <form class="form container" @submit.prevent="addUser">
             <div class="mb-3">
-                <input type="text" class="form-control w-50 mx-auto" id="exampleFormControlInput1" placeholder="First Name" >
+                <input type="text" class="form-control w-50 mx-auto" id="exampleFormControlInput1" placeholder="First Name" v-model="payload.firstName">
             </div>
             <div class="mb-3">
-                <input type="text" class="form-control w-50 mx-auto" id="exampleFormControlInput1" placeholder="Last Name" >
+                <input type="text" class="form-control w-50 mx-auto" id="exampleFormControlInput1" placeholder="Last Name" v-model="payload.lastName">
             </div>
             <div class="mb-3">
-                <input type="text" class="form-control w-50 mx-auto" id="exampleFormControlInput1" placeholder="Gender" >
+                <input type="text" class="form-control w-50 mx-auto" id="exampleFormControlInput1" placeholder="Role" v-model="payload.userRole">
             </div>
             <div class="mb-3">
-                <input type="email" class="form-control w-50 mx-auto" id="exampleFormControlInput1" placeholder="Email" >
+                <input type="text" class="form-control w-50 mx-auto" id="exampleFormControlInput1" placeholder="Gender" v-model="payload.gender">
             </div>
             <div class="mb-3">
-                <input type="password" class="form-control w-50 mx-auto" id="exampleFormControlInput1" placeholder="Password" >
+                <input type="email" class="form-control w-50 mx-auto" id="exampleFormControlInput1" placeholder="Email" v-model="payload.emailAddress">
             </div>
             <div class="mb-3">
-                <input type="text" class="form-control w-50 mx-auto" id="exampleFormControlInput1" placeholder="Profile URL" >
+                <input type="password" class="form-control w-50 mx-auto" id="exampleFormControlInput1" placeholder="Password" v-model="payload.userPassword">
             </div>
-                <!-- <div class="mb-3">
-                    <input type="date" class="form-control w-50 mx-auto" id="exampleFormControlInput1" placeholder="Date Joined" >
-                </div> -->
+            <div class="mb-3">
+                <input type="text" class="form-control w-50 mx-auto" id="exampleFormControlInput1" placeholder="Profile URL" v-model="payload.userProfile">
+            </div>
             <div class="text-center">
                 <button type="submit" class="btn w-10 btn-lg bg-dark" style="color:#F1F2EE ;">Register</button>
             </div>
@@ -42,8 +42,29 @@
 
     export default {
         name: 'RegisterView',
-        components: {
-         
+        data(){
+            return{
+                payload: {
+                    firstName:'',
+                    lastName:'',
+                    userRole:'',
+                    gender:'',
+                    emailAddress:'',
+                    userPassword:'',
+                    userProfile:'https://i.postimg.cc/pTLmhdpj/placeholder-person.jpg'  
+                }
+            }
+        },
+        computed: {
+            message(){
+                return this.store.state.message
+            }
+        },
+        methods: {
+            addUser(){
+                console.log('Debug', this.payload);
+                this.$store.dispatch('addUser',this.payload)
+            }
         }
     }
 </script>

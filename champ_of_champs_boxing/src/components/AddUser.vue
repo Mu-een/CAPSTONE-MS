@@ -13,31 +13,33 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-            <div class="mb-3">
-                <input type="text" class="form-control w-50 mx-auto" id="exampleFormControlInput1" placeholder="First Name">
-            </div>
-            <div class="mb-3">
-                <input type="text" class="form-control w-50 mx-auto" id="exampleFormControlInput1" placeholder="Last Name">
-            </div>
-            <div class="mb-3">
-                <input type="text" class="form-control w-50 mx-auto" id="exampleFormControlInput1" placeholder="Role">
-            </div>
-            <div class="mb-3">
-                <input type="text" class="form-control w-50 mx-auto" id="exampleFormControlInput1" placeholder="Gender">
-            </div>
-            <div class="mb-3">
-                <input type="email" class="form-control w-50 mx-auto" id="exampleFormControlInput1" placeholder="Email">
-            </div>
-            <div class="mb-3">
-                <input type="password" class="form-control w-50 mx-auto" id="exampleFormControlInput1" placeholder="Password">
-            </div>
-            <div class="mb-3">
-                <input type="text" class="form-control w-50 mx-auto" id="exampleFormControlInput1" placeholder="Profile URL" >
-            </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-success">Add User</button>
+        <form  @submit.prevent="addUser">
+          <div class="mb-3">
+              <input type="text" class="form-control w-50 mx-auto" placeholder="First Name" v-model="payload.firstName">
+          </div>
+          <div class="mb-3">
+              <input type="text" class="form-control w-50 mx-auto" placeholder="Last Name" v-model="payload.lastName">
+          </div>
+          <div class="mb-3">
+              <input type="text" class="form-control w-50 mx-auto" placeholder="Role" v-model="payload.userRole">
+          </div>
+          <div class="mb-3">
+              <input type="text" class="form-control w-50 mx-auto" placeholder="Gender" v-model="payload.gender">
+          </div>
+          <div class="mb-3">
+              <input type="email" class="form-control w-50 mx-auto" placeholder="Email" v-model="payload.emailAddress">
+          </div>
+          <div class="mb-3">
+              <input type="password" class="form-control w-50 mx-auto" placeholder="Password" v-model="payload.userPassword">
+          </div>
+          <div class="mb-3">
+              <input type="text" class="form-control w-50 mx-auto" placeholder="Profile URL" v-model="payload.userProfile">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-success">Add User</button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
@@ -48,6 +50,30 @@
 <script>
     export default {
         name: 'AddUser',
+        data(){
+          return{
+            payload: {
+              firstName:'',
+              lastName:'',
+              userRole:'',
+              gender:'',
+              emailAddress:'',
+              userPassword:'',
+              userProfile:'https://i.postimg.cc/pTLmhdpj/placeholder-person.jpg'
+            }
+          }
+        },
+        computed: {
+          message(){
+            return this.store.state.message
+          }
+        },
+        methods: {
+          addUser(){
+            console.log('Debug', this.payload);
+            this.$store.dispatch('addUser', this.payload)
+          }
+        }
     }
 </script>
 
