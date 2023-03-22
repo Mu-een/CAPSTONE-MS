@@ -16,7 +16,7 @@
             </form><br>
             <p class="text-center text-light" style="margin-top: 30px;font-size: 18px;">Don't have an account? <a href="/register" style="text-decoration: none;color: red;">Register here</a></p>
             <div class="text-light text-center " style="font-size: 20px;">
-                <p>{{ message }} as {{ user?.firstName }} {{ user?.lastName}}</p>
+                <p>{{ message }} {{ user?.firstName }} {{ user?.lastName}}</p>
             </div>
     </div>
 </template>

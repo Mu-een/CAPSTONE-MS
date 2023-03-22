@@ -45,6 +45,12 @@ export default createStore({
     },
     setToken(state, value){
       state.token = value
+    },
+    login(state) {
+      state.loggedIn = true
+    },
+    logout(state){
+      state.loggedIn = false
     }
   },
   actions: {
@@ -142,6 +148,10 @@ export default createStore({
       } catch (error) {
         console.error(error)
       }
+    },
+    async fetchUser ({commit}) {
+      const res = await axios.get(`${champOfChamps}user`)
+      commit('setUser', res.data)
     }
   },
   modules: {

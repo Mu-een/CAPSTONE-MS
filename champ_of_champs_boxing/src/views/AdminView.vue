@@ -4,69 +4,71 @@
     <AddUser/>
     <SpinnerC v-if="isLoading"/>
     <div class="container-fluid" v-else>
-        <table class="table table-transparent table-border">
-            <thead>
-                <tr class="text-center text-light">
-                    <th scope="col">ID</th>
-                    <th scope="col">FIRST NAME</th>
-                    <th scope="col">LAST NAME</th>
-                    <th scope="col">ROLE</th>
-                    <th scope="col">GENDER</th>
-                    <th scope="col">EMAIL</th>
-                    <th scope="col">PASSWORD</th>
-                    <th scope="col">PROFILE</th>
-                    <th scope="col">EDIT</th>
-                    <th scope="col">DELETE</th>
-                </tr>
-            </thead>
-            <tbody class="text-center text-light">
-                <tr v-for="user in users" :key="user">
-                    <td>{{ user.userId }}</td>
-                    <td>{{ user.firstName }}</td>
-                    <td>{{ user.lastName }}</td>
-                    <td>{{ user.userRole }}</td>
-                    <td>{{ user.gender }}</td>
-                    <td>{{ user.emailAddress }}</td>
-                    <td>{{ user.userPassword }}</td>
-                    <td><img :src="user.userProfile" alt="" class="img-fluid"></td>
-                    <td><EditUser/></td>
-                    <td><button type="submit" class=" btn bg-warning" @click="$event => deleteUser(user.userId)"><i class="bi bi-trash3"></i></button></td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
-    <!-- events -->
-    <h3 class="text-center display-3 text-danger">EVENTS</h3>
-    <AddEvent/>
-    <SpinnerC v-if="isLoading"/>
-    <div class="container-fluid table-responsive" v-else>
-        <table class="table table-transparent table-border">
-            <thead>
-                <tr class="text-center text-light">
-                    <th>ID</th>
-                    <th>EVENT NAME</th>
-                    <th>EVENT DESCRIPTION</th>
-                    <th>WEIGHT DIVISION</th>
-                    <th>PRICE</th>
-                    <th>CARD</th>
-                    <th>EDIT</th>
-                    <th>DELETE</th>
-                </tr>
-            </thead>
-            <tbody class="text-center text-light">
-                <tr v-for="event in events" :key="event">
-                    <th scope="row">{{ event.id }}</th>
-                    <td>{{ event.eventName }}</td>
-                    <td>{{ event.eventDescription }}</td>
-                    <td>{{ event.weightDivision }}</td>
-                    <td>R{{ event.price }}</td>
-                    <td><img :src="event.eventIMG" alt="" class="img-fluid"></td>
-                    <td><EditEvent/></td>
-                    <td><button type="submit" class=" btn bg-warning" @click="$event => deleteEvent(event.id)"><i class="bi bi-trash3"></i></button></td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="table-responsive">
+            <table class="table table-transparent table-border">
+                <thead>
+                    <tr class="text-center text-light">
+                        <th scope="col">ID</th>
+                        <th scope="col">FIRST NAME</th>
+                        <th scope="col">LAST NAME</th>
+                        <th scope="col">ROLE</th>
+                        <th scope="col">GENDER</th>
+                        <th scope="col">EMAIL</th>
+                        <th scope="col">PASSWORD</th>
+                        <th scope="col">PROFILE</th>
+                        <th scope="col">EDIT</th>
+                        <th scope="col">DELETE</th>
+                    </tr>
+                </thead>
+                <tbody class="text-center text-light">
+                    <tr v-for="user in users" :key="user">
+                        <td>{{ user.userId }}</td>
+                        <td>{{ user.firstName }}</td>
+                        <td>{{ user.lastName }}</td>
+                        <td>{{ user.userRole }}</td>
+                        <td>{{ user.gender }}</td>
+                        <td>{{ user.emailAddress }}</td>
+                        <td>{{ user.userPassword }}</td>
+                        <td><img :src="user.userProfile" alt="" class="img-fluid"></td>
+                        <td><EditUser/></td>
+                        <td><button type="submit" class=" btn bg-warning" @click="$event => deleteUser(user.userId)"><i class="bi bi-trash3"></i></button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    
+        <!-- events -->
+        <h3 class="text-center display-3 text-danger">EVENTS</h3>
+        <AddEvent/>
+        <SpinnerC v-if="isLoading"/>
+        <div class="container-fluid" v-else>
+            <table class="table table-transparent table-border">
+                <thead>
+                    <tr class="text-center text-light">
+                        <th>ID</th>
+                        <th>EVENT NAME</th>
+                        <th>EVENT DESCRIPTION</th>
+                        <th>WEIGHT DIVISION</th>
+                        <th>PRICE</th>
+                        <th>CARD</th>
+                        <th>EDIT</th>
+                        <th>DELETE</th>
+                    </tr>
+                </thead>
+                <tbody class="text-center text-light">
+                    <tr v-for="event in events" :key="event">
+                        <th scope="row">{{ event.id }}</th>
+                        <td>{{ event.eventName }}</td>
+                        <td>{{ event.eventDescription }}</td>
+                        <td>{{ event.weightDivision }}</td>
+                        <td>R{{ event.price }}</td>
+                        <td><img :src="event.eventIMG" alt="" class="img-fluid"></td>
+                        <td><EditEvent/></td>
+                        <td><button type="submit" class=" btn bg-warning" @click="$event => deleteEvent(event.id)"><i class="bi bi-trash3"></i></button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
     
 </template>
@@ -133,8 +135,10 @@ img {
 h3, thead {
   font-family: 'DM Serif Display', serif;
 }
-
-@media screen and(max-width: 720px) and (min-width: 300px) {
+.table-responsive {
+    overflow-x: auto;
+}
+/* @media screen and(max-width: 720px) and (min-width: 300px) {
   .table {
     display: block;
     width: 100%;
@@ -152,5 +156,46 @@ h3, thead {
     float: left;
     font-weight: bold;
   }
+} */
+
+@media screen and (max-width: 760px) {
+    .table-responsive {
+        margin-bottom: 15px;
+        overflow-y: hidden;
+        width: 100%;
+    }
+
+    table {
+        margin: 0;
+    }
+
+    table thead {
+        display: none;
+    }
+
+    table tr {
+        display: block;
+        margin-bottom: 15px;
+    }
+
+    table td {
+        display: block;
+        font-size: 15px;
+        text-align: right;
+        position: relative;
+        padding-left: 50%;
+    }
+
+    table td:before {
+        display: inline-block;
+        font-weight: 500;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 50%;
+        padding-left: 15px;
+        text-align: left;
+    }
 }
+
 </style>
