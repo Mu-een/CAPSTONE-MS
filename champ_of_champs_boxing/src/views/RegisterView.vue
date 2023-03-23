@@ -28,7 +28,7 @@
                 <input type="text" class="form-control w-50 mx-auto" id="exampleFormControlInput1" placeholder="Profile URL" v-model="payload.userProfile">
             </div>
             <div class="text-center">
-                <button type="submit" class="btn w-10 btn-lg bg-dark" style="color:#F1F2EE ;">Register</button>
+                <button type="submit" class="btn w-10 btn-lg bg-light text-dark" style="color:#F1F2EE ;">Register</button>
             </div>
             <div>
                 <label class="form-control" v-show="userMessage"></label>
@@ -94,5 +94,22 @@
 
 h3 {
   font-family: 'DM Serif Display', serif;
+}
+
+button {
+  background-color: rgb(255, 255, 255);
+  border: 3px solid black;
+  padding: 12px 32px;
+  border-radius: 22px;
+  box-shadow: 2px 2px 1px black;
+  transition: all .2s ease;
+  font-size: 1em;
+  font-weight: 800;
+}
+
+button:hover {
+  transform: translate(-2px, -1px);
+  box-shadow: 7px 7px 1px  rgb(0, 0, 0);
+  transition: all .2s ease-in;
 }
 </style>

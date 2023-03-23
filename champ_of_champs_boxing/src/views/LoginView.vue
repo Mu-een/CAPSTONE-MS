@@ -45,7 +45,7 @@
                 console.log('Return:', this.payload);
                 this.$store.dispatch('login',this.payload)
             }
-        }
+        },
     }
 </script>
 
