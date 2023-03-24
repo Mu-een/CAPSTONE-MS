@@ -1,6 +1,6 @@
 <template>
     <!-- Button trigger modal -->
-<button type="button " class="btn btn-warning modalButton" data-bs-toggle="modal" data-bs-target="#exampleModal">
+<button type="button " class="btn modalButton" data-bs-toggle="modal" data-bs-target="#exampleModal">
   Create User
 </button>
 
@@ -82,5 +82,7 @@
     display: flex;
     margin: auto; 
     margin-bottom: 10px;
+    background-color: #07ff07;
+    color: black;
 }
 </style>

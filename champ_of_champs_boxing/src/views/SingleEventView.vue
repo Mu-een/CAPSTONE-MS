@@ -8,7 +8,7 @@
             <p>EVENT DESCRIPTION: {{ event?.eventDescription }}</p>
             <p>WEIGHT DIVISION: {{ event?.weightDivision }}</p>
             <p>PRICE: R{{ event?.price }}</p>
-            <button class="btn bg-success text-light">Add to Cart</button>
+            <button class="btn text-light">Add to Cart</button>
         </div>
     </div><br>
 </template>
@@ -46,5 +46,9 @@ import { useStore } from 'vuex';
 <style scoped>
 img {
     border-radius: 20px;
+}
+
+button {
+    background-color:#07ff07;
 }
 </style>

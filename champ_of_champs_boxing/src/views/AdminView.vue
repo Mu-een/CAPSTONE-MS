@@ -14,7 +14,7 @@
                         <th scope="col">ROLE</th>
                         <th scope="col">GENDER</th>
                         <th scope="col">EMAIL</th>
-                        <th scope="col">PASSWORD</th>
+                        <!-- <th scope="col">PASSWORD</th> -->
                         <th scope="col">PROFILE</th>
                         <th scope="col">EDIT</th>
                         <th scope="col">DELETE</th>
@@ -22,16 +22,16 @@
                 </thead>
                 <tbody class="text-center text-light">
                     <tr v-for="user in users" :key="user">
-                        <td>{{ user.userId }}</td>
-                        <td>{{ user.firstName }}</td>
-                        <td>{{ user.lastName }}</td>
-                        <td>{{ user.userRole }}</td>
-                        <td>{{ user.gender }}</td>
-                        <td>{{ user.emailAddress }}</td>
-                        <td>{{ user.userPassword }}</td>
-                        <td><img :src="user.userProfile" alt="" class="img-fluid"></td>
-                        <td><EditUser/></td>
-                        <td><button type="submit" class=" btn bg-warning" @click="$event => deleteUser(user.userId)"><i class="bi bi-trash3"></i></button></td>
+                        <td data-label="ID">{{ user.userId }}</td>
+                        <td data-label="FirstName">{{ user.firstName }}</td>
+                        <td data-label="LastName">{{ user.lastName }}</td>
+                        <td data-label="Role">{{ user.userRole }}</td>
+                        <td data-label="Gender">{{ user.gender }}</td>
+                        <td data-label="Email">{{ user.emailAddress }}</td>
+                        <!-- <td data-label="Password">{{ user.userPassword }}</td> -->
+                        <td data-label="Profile"><img :src="user.userProfile" alt="" class="img-fluid"></td>
+                        <td data-label="Edit"><EditUser/></td>
+                        <td data-label="Delete"><button type="submit" class=" btn deleteButton" @click="$event => deleteUser(user.userId)"><i class="bi bi-trash3"></i></button></td>
                     </tr>
                 </tbody>
             </table>
@@ -64,7 +64,7 @@
                         <td>R{{ event.price }}</td>
                         <td><img :src="event.eventIMG" alt="" class="img-fluid"></td>
                         <td><EditEvent/></td>
-                        <td><button type="submit" class=" btn bg-warning" @click="$event => deleteEvent(event.id)"><i class="bi bi-trash3"></i></button></td>
+                        <td><button type="submit" class=" btn deleteButton" @click="$event => deleteEvent(event.id)"><i class="bi bi-trash3"></i></button></td>
                     </tr>
                 </tbody>
             </table>
@@ -157,6 +157,10 @@ h3, thead {
     font-weight: bold;
   }
 } */
+.deleteButton {
+  background-color:#07ff07 ;
+  color: black;
+}
 
 @media screen and (max-width: 760px) {
     .table-responsive {
@@ -184,10 +188,12 @@ h3, thead {
         text-align: right;
         position: relative;
         padding-left: 50%;
+        width: 100%;
     }
 
     table td:before {
         display: inline-block;
+        content: attr(data-label);
         font-weight: 500;
         position: absolute;
         top: 0;

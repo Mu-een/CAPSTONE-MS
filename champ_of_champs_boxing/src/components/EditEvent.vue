@@ -1,6 +1,6 @@
 <template>
          <!-- Button trigger modal -->
-<button type="button" class="btn btn-warning modalButton" data-bs-toggle="modal" data-bs-target="#editEventModal">
+<button type="button" class="btn modalButton" data-bs-toggle="modal" data-bs-target="#editEventModal">
     <i class="bi bi-pencil-square"></i>
 </button>
 
@@ -45,5 +45,8 @@
 </script>
 
 <style scoped>
-
+.modalButton {
+  background-color:#07ff07 ;
+  color: black;
+}
 </style>

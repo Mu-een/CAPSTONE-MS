@@ -7,7 +7,6 @@ const champOfChamps = "https://api-capstone.onrender.com/";
 export default createStore({
   state: {
     user: JSON.parse(localStorage.getItem('user')) || null,
-    // user: null,
     users: null,
     event: null,
     events: null,
@@ -134,23 +133,6 @@ export default createStore({
         commit('setMessage','Cannot delete user')
       }
     },
-    // async login(context, payload) {
-    //   try {
-    //     const res = await axios.post(`${champOfChamps}login`, payload);
-    //     console.log('Results:', res);
-    //     const { result, jwToken, msg, err } = await res.data;
-    //     if (result) {
-    //       context.commit('setUser', result);
-    //       context.commit('setToken', jwToken);
-    //       localStorage.setItem('login_token', jwToken); // Store token in local storage
-    //       context.commit('setMessage', msg);
-    //     } else {
-    //       context.commit('setMessage', err);
-    //     }
-    //   } catch (error) {
-    //     console.error(error);
-    //   }
-    // },
     async login(context, payload) {
       try {
         const res = await axios.post(`${champOfChamps}login`, payload);
@@ -159,8 +141,8 @@ export default createStore({
         if (result) {
           context.commit('setUser', result);
           context.commit('setToken', jwToken);
-          localStorage.setItem('login_token', jwToken); // Store token in local storage
-          localStorage.setItem('user', JSON.stringify(result)); // Store user object in local storage
+          localStorage.setItem('login_token', jwToken);
+          localStorage.setItem('user', JSON.stringify(result));
           context.commit('setMessage', msg);
         } else {
           context.commit('setMessage', err);

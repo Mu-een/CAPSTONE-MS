@@ -100,7 +100,7 @@
            <textarea class="form-control" rows="3" placeholder="Type your message here .." required="required"></textarea>
          </div>
          <div>
-            <button type="submit button" class="btn btn-lg text-light bg-danger">Send</button>
+            <button type="submit button" class="btn btn-lg sendBtn">Send</button>
          </div>
         </form>
 </div>
@@ -167,5 +167,25 @@ h2 {
 }
 h1 , h2 {
   font-family: 'DM Serif Display', serif;
+}
+
+.sendBtn {
+  background-color:red;
+  border: 3px solid black;
+  padding: 12px 32px;
+  border-radius: 22px;
+  box-shadow: 2px 2px 1px black;
+  transition: all .2s ease;
+  font-size: 1em;
+  font-weight: 800;
+  color: white;
+}
+
+.sendBtn:hover {
+  color: red;
+  background-color: white;
+  transform: translate(-2px, -1px);
+  box-shadow: 7px 7px 1px  rgb(0, 0, 0);
+  transition: all .2s ease-in;
 }
 </style>
