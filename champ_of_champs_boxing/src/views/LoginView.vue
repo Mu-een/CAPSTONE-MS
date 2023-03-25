@@ -1,6 +1,6 @@
 <template>
     <div class="login-img" style="position: relative;"></div>
-    <div class="container-fluid login">
+    <div class="container-fluid login" style="overflow-x: hidden;">
             <h3 class="text-center display-3">LOGIN TO YOUR ACCOUNT</h3>
             <p class="text-center" style="font-size: 20px;">Login to access CHAMP OF CHAMPS</p>
             <form class="form container" @submit.prevent="login">

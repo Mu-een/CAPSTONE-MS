@@ -24,12 +24,12 @@
             <div class="mb-3">
                 <input type="password" class="form-control w-50 mx-auto" id="exampleFormControlInput1" placeholder="Password" v-model="payload.userPassword">
             </div>
-            <!-- <div class="mb-3">
-                <input type="text" class="form-control w-50 mx-auto" id="exampleFormControlInput1" placeholder="Profile URL" v-model="payload.userProfile">
-            </div> -->
             <div class="mb-3">
-                <input type="file" class="form-control w-50 mx-auto" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload" :v-model="payload.userProfile">
+                <input type="text" class="form-control w-50 mx-auto" id="exampleFormControlInput1" placeholder="Profile URL" v-model="payload.userProfile">
             </div>
+            <!-- <div class="mb-3">
+                <input type="file" class="form-control w-50 mx-auto" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload" :v-model="payload.userProfile">
+            </div> -->
             <div class="text-center">
                 <button type="submit" class="btn w-10 btn-lg bg-light text-dark" style="color:#F1F2EE ;">Register</button>
             </div>
@@ -51,7 +51,7 @@
                     gender:'',
                     emailAddress:'',
                     userPassword:'',
-                    userProfile:''  
+                    userProfile:'https://i.postimg.cc/pTLmhdpj/placeholder-person.jpg'  
                 }
             }
         },

@@ -1,5 +1,5 @@
 <template>
-    <nav class="navbar navbar-expand-lg bg-body-transparent">
+    <nav class="navbar navbar-expand-lg bg-body-transparent container-fluid">
         <div class="container-fluid ">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01"
                 aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
@@ -46,11 +46,26 @@ export default {
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap');
 
+img:hover {
+    animation: pulse 1s infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes pulse {
+    0% {
+        transform:scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
 nav {
     background-color: #DEDBD8;
     padding: 30px;
     font-family: 'DM Serif Display', serif;
-
 }
 
 a {
@@ -69,4 +84,6 @@ nav a.router-link-exact-active {
   background-color: #0A0F0D;
   border-radius: 20px;
 }
+
+
 </style>

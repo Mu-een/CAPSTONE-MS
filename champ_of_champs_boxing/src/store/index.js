@@ -93,6 +93,21 @@ export default createStore({
         console.error(error)
       }
     },
+    async updateEvent(context, payload) {
+      try {
+        const response = await axios.put(`${champOfChamps}event/${payload.id}`, payload);
+        console.log("Response:", Response);
+        alert ('Event updated')
+        let {results, err} = await response.data;
+        if(results) {
+          context.commit('setEvent', response.data);
+        } else {
+          context.commit('setMessage', err)
+        }
+      } catch (error) {
+        console.log(error)
+      }
+    },
     async deleteEvent({commit, dispatch}, id) {
       try {
         await axios.delete(`${champOfChamps}event/${id}`)
@@ -137,6 +152,21 @@ export default createStore({
         commit('setMessage','Cannot delete user')
       }
     },
+    async updateUser (context, payload) {
+      try {
+        const res = await axios.put(`${champOfChamps}user/${payload.userId}`, payload);
+        console.log("Response:", res);
+        alert('User updated')
+        let {results, err} = await res.data;
+        if (results) {
+          context.commit('setUser', results[0]);
+        } else {
+          context.commit('setMessage', err);
+        }
+      } catch (error) {
+        console.log(error)
+      }
+    },
     async login(context, payload) {
       try {
         const res = await axios.post(`${champOfChamps}login`, payload);
@@ -162,17 +192,21 @@ export default createStore({
 
     // CART
     async fetchCart(context, id) {
-      const res = await axios.get(`${champOfChamps}user/${id}/carts`);
-      context.commit('setCart', res.data)
-      console.log(id)
-    },
-    async addToCart(context, {userId, payload}) {
-      console.log(userId, payload);
-      const {res, message} = await axios.post(`${champOfChamps}user/${userId}/cart`, payload)
-      if(res) {
+      try {
+        const res = await axios.get(`${champOfChamps}user/${id}/carts`);
         context.commit('setCart', res.data)
-      } else {
-        context.commit('setMessage', message)
+        console.log(id)
+      } catch (error) {
+        console.log(error)
+      }
+    },
+    async addToCart(context, {payload}) {
+      try {
+        let userId = localStorage.getItem('user'); 
+        const {data} = await axios.post(`${champOfChamps}user/${userId}/cart`, payload);
+        context.commit('setCart', data)
+      } catch (error) {
+        console.log(error)
       }
     }
   },

@@ -30,7 +30,51 @@
                         <td data-label="Email">{{ user.emailAddress }}</td>
                         <!-- <td data-label="Password">{{ user.userPassword }}</td> -->
                         <td data-label="Profile"><img :src="user.userProfile" alt="" class="img-fluid"></td>
-                        <td data-label="Edit"><EditUser/></td>
+                        <td data-label="Edit"> <!-- Button trigger modal -->
+<button type="button" class="btn modalButton" data-bs-toggle="modal" :data-bs-target="'#editUserModal' + `${user.userId}`">
+    <i class="bi bi-pencil-square"></i>
+</button>
+
+<!-- Modal -->
+<div class="modal fade" :id="'editUserModal' + `${user.userId}`" tabindex="-1" aria-labelledby="editUserModelLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5 text-dark" id="editUserModalLabel">User Details</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form @submit.prevent="updateUser(user)">
+            <div class="mb-3">
+                    <input type="text" class="form-control w-50 mx-auto" id="exampleFormControlInput1" placeholder="First Name" v-model="user.firstName">
+                </div>
+                <div class="mb-3">
+                    <input type="text" class="form-control w-50 mx-auto" id="exampleFormControlInput1" placeholder="Last Name" v-model="user.lastName">
+                </div>
+                <div class="mb-3">
+                    <input type="text" class="form-control w-50 mx-auto" id="exampleFormControlInput1" placeholder="Role" v-model="user.userRole" >
+                </div>
+                <div class="mb-3">
+                    <input type="text" class="form-control w-50 mx-auto" id="exampleFormControlInput1" placeholder="Gender" v-model="user.gender">
+                </div>
+                <div class="mb-3">
+                    <input type="email" class="form-control w-50 mx-auto" id="exampleFormControlInput1" placeholder="Email" v-model="user.emailAddress" >
+                </div>
+                <div class="mb-3">
+                    <input type="password" class="form-control w-50 mx-auto" id="exampleFormControlInput1" placeholder="Please enter Password">
+                </div>
+                <div class="mb-3">
+                    <input type="text" class="form-control w-50 mx-auto" id="exampleFormControlInput1" placeholder="Profile URL" v-model="user.userProfile">
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-success">Edit User</button>
+                </div>
+            </form>
+          </div>
+    </div>
+  </div>
+</div></td>
                         <td data-label="Delete"><button type="submit" class=" btn deleteButton" @click="$event => deleteUser(user.userId)"><i class="bi bi-trash3"></i></button></td>
                     </tr>
                 </tbody>
@@ -63,7 +107,46 @@
                         <td>{{ event.weightDivision }}</td>
                         <td>R{{ event.price }}</td>
                         <td><img :src="event.eventIMG" alt="" class="img-fluid"></td>
-                        <td><EditEvent/></td>
+                        <td>         <!-- Button trigger modal -->
+<button type="button" class="btn modalButton" data-bs-toggle="modal" :data-bs-target="'#editEventModal' + `${event.id}`" >
+    <i class="bi bi-pencil-square"></i>
+</button>
+
+<!-- Modal -->
+<div class="modal fade" :id="'editEventModal' + `${event.id}`" tabindex="-1" aria-labelledby="editEventModelLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5 text-dark" id="editEventModalLabel">Event Details</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form @submit.prevent="updateEvent(event)">
+            <div class="mb-3">
+                <input type="text" class="form-control w-50 mx-auto" id="exampleFormControlInput1" placeholder="Event Name" v-model="event.eventName">
+            </div>
+            <div class="mb-3">
+                <input type="text" class="form-control w-50 mx-auto" id="exampleFormControlInput1" placeholder="Event Description" v-model="event.eventDescription">
+            </div>
+            <div class="mb-3">
+                <input type="text" class="form-control w-50 mx-auto" id="exampleFormControlInput1" placeholder="Weight Division" v-model="event.weightDivision" >
+            </div>
+            <div class="mb-3">
+                <input type="text" class="form-control w-50 mx-auto" id="exampleFormControlInput1" placeholder="Price" v-model="event.price">
+            </div>
+            <div class="mb-3">
+                <input type="text" class="form-control w-50 mx-auto" id="exampleFormControlInput1" placeholder="Card IMG" v-model="event.eventIMG">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-success">Edit Event</button>
+            </div>    
+        </form>
+        </div>
+    </div>
+</div>
+</div>
+</td>
                         <td><button type="submit" class=" btn deleteButton" @click="$event => deleteEvent(event.id)"><i class="bi bi-trash3"></i></button></td>
                     </tr>
                 </tbody>
@@ -75,9 +158,9 @@
 
 <script>
 import AddUser from '@/components/AddUser.vue';
-import EditUser from '@/components/EditUser.vue'
+// import EditUser from '@/components/EditUser.vue'
 import AddEvent from '@/components/AddEvent.vue';
-import EditEvent from '@/components/EditEvent.vue'
+// import EditEvent from '@/components/EditEvent.vue'
 import SpinnerC from '@/components/SpinnerC.vue';
 
 import { useStore } from 'vuex';
@@ -86,9 +169,9 @@ import { computed } from '@vue/runtime-core'
         name: 'AdminView',
         components : {
             AddUser,
-            EditUser,
+            // EditUser,
             AddEvent,
-            EditEvent,
+            // EditEvent,
             SpinnerC
         },
         methods:{
@@ -97,6 +180,28 @@ import { computed } from '@vue/runtime-core'
             },
             deleteUser(id){
                 this.$store.dispatch('deleteUser',id)
+            },
+            updateEvent: function (event) {
+                return this.$store.dispatch('updateEvent', {
+                    id: event.id,
+                    eventName: event.eventName,
+                    eventDescription: event.eventDescription,
+                    weightDivision: event.weightDivision,
+                    price: event.price,
+                    eventIMG: event.eventIMG
+                })
+            },
+            updateUser: function (user) {
+                return this.$store.dispatch('updateUser', {
+                    userId: user.userId,
+                    firstName: user.firstName,
+                    lastName: user.lastName,
+                    userRole: user.userRole,
+                    gender: user.gender,
+                    emailAddress: user.emailAddress,
+                    userPassword: user.userPassword,
+                    userProfile: user.userProfile
+                })
             }
         },
         setup(){
@@ -138,26 +243,13 @@ h3, thead {
 .table-responsive {
     overflow-x: auto;
 }
-/* @media screen and(max-width: 720px) and (min-width: 300px) {
-  .table {
-    display: block;
-    width: 100%;
-    overflow-x: hidden;
-  }
-}
-@media only screen and (max-width: 700px) {
-  table, thead, tbody, th, td, tr {
-    display: block;
-  }
-  th {
-    text-align: left;
-  }
-  tbody td:before {
-    float: left;
-    font-weight: bold;
-  }
-} */
+
 .deleteButton {
+  background-color:#07ff07 ;
+  color: black;
+}
+
+.modalButton {
   background-color:#07ff07 ;
   color: black;
 }

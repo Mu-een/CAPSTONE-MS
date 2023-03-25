@@ -21,7 +21,7 @@ import FooterC from './components/FooterC.vue';
 @import url('https://fonts.googleapis.com/css2?family=Alata&display=swap');
 .app {
   min-height: 100vh;
-  min-width: 300px;
+  /* min-width: 300px; */
   background-color: #0A0F0D;
   font-family: 'Alata', sans-serif;
 }
