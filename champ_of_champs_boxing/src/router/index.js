@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 
+
 const routes = [
   {
     path: '/',
@@ -46,6 +47,17 @@ const routes = [
     path: '/account',
     name: 'account',
     component: () => import( '../views/UserProfileView.vue')
+  },
+  {
+    path: '/logout',
+    name: 'logout',
+    component: () => import( '../views/LoginView.vue'),
+    beforeEnter(){
+      router.push({name: 'login'})
+      localStorage.removeItem('login_token');
+      localStorage.removeItem('user');
+      location.reload();
+    }
   }
 ]
 
