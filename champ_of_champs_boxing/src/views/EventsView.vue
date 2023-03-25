@@ -27,7 +27,7 @@
         <p class="card-text text-center ">{{ event.weightDivision }}</p>
         <p class="card-text text-center ">R{{ event.price }}</p>
         <router-link :to="{name: 'event', params : {id: event.id}}"><button class="btn btn-dark w-50">Details</button></router-link>
-        <button class="btn w-50 addToCartBtn text-light">Add to Cart</button>
+        <button class="btn w-50 addToCartBtn text-light" @click="addToCart(event)">Add to Cart</button>
       </div>
     </div>
 </div><br>
@@ -53,6 +53,17 @@ import SpinnerC from '@/components/SpinnerC.vue';
         methods: {
           sortByPrice(){
             this.$store.commit("sortEventsByPrice");
+          },
+          async addToCart(event) {
+            const userId = localStorage.getItem('user');
+            console.log(userId, event.id);
+            this.$store.dispatch('addToCart', {
+                userId: userId,
+                payload: {
+                    userId: userId,
+                    id: event.id
+                }
+            })
           }
         },
         data(){

@@ -14,7 +14,8 @@ export default createStore({
     Spinner: null,
     asc: true,
     loggedIn: false,
-    token: null
+    token: null,
+    cart: null
   },
   getters: {
   },
@@ -52,6 +53,9 @@ export default createStore({
     },
     logout(state){
       state.loggedIn = false
+    },
+    setCart(state, value){
+      state.cart = value
     }
   },
   actions: {
@@ -154,6 +158,22 @@ export default createStore({
     async fetchUser ({commit}) {
       const res = await axios.get(`${champOfChamps}user`)
       commit('setUser', res.data)
+    },
+
+    // CART
+    async fetchCart(context, id) {
+      const res = await axios.get(`${champOfChamps}user/${id}/carts`);
+      context.commit('setCart', res.data)
+      console.log(id)
+    },
+    async addToCart(context, {userId, payload}) {
+      console.log(userId, payload);
+      const {res, message} = await axios.post(`${champOfChamps}user/${userId}/cart`, payload)
+      if(res) {
+        context.commit('setCart', res.data)
+      } else {
+        context.commit('setMessage', message)
+      }
     }
   },
   modules: {
